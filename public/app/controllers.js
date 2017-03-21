@@ -70,7 +70,7 @@ angular.module('AuthCtrls', ['AuthServices'])
   };
 }])
 .controller("movieCtrl",["$scope", "$http", function($scope, $http){
-    $scope.searchTerm ="space jam" ;
+    $scope.searchTerm ="" ;
   $scope.$watch("searchTerm", function(newVal, oldVal){
     var req = {
       url:"http://www.omdbapi.com/?",
