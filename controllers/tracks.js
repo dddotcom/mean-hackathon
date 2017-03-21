@@ -9,7 +9,7 @@ router.post('/', function(req,res){
 	Track.create(req.body, function(err, track) {
 		if (err) return res.status(500).send(err);
 		return res.send(track);
-	})
+	});
 });
 
 router.get('/', function(req,res){
@@ -17,7 +17,15 @@ router.get('/', function(req,res){
 	Track.find(function(err, tracks) {
 		if (err) return res.status(500).send(err);
 		return res.send(tracks);
-	})
+	});
+});
+
+router.get('/:filmId', function(req,res){
+	//Show the track
+	Track.find({imdbID : req.params.filmId}, function(err, tracks) {
+		if (err) return res.status(500).send(err);
+		return res.send(tracks);
+	});
 });
 
 router.put('/:songId', function(req,res){

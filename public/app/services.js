@@ -13,7 +13,7 @@ angular.module('AuthServices', ['ngResource'])
       });
     },
     getTracks: function(filmId){
-     return $http.get("api/tracks")
+     return $http.get("api/tracks/" + filmId)
      .then(function success(response){
        console.log("got tracks successfully");
        console.log(response.data);
