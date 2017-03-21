@@ -30,10 +30,17 @@ router.get('/:filmId', function(req,res){
 
 router.put('/:songId', function(req,res){
 	//Update the track
-	Track.findById(req.params.songId, function(err, track) {
+	Track.findByIdAndUpdate(req.params.songId, req.body, function(err) {
 		if (err) return res.status(500).send(err);
+		return res.send({ message: 'success' });
+	});
+});
+
+router.get('/singleTrack/:trackId', function(req, res){
+	Track.findById(req.params.trackId, function(err, track){
+		if(err) return res.status(500).send(err);
 		return res.send(track);
-	})
+	});
 });
 
 //Listener
