@@ -1,2 +1,14 @@
-<h1>Home</h1>
+<div ng-controller="movieCtrl">
+  <h1>Home</h1>
+  <label for="">Find Movie by Title</label>
+  <input type="text" name="movieTitle" ng-model="searchTerm">
+  <button type="submit" ng-click="getMovie(searchTerm)">GO</button>
 
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="well" ng-repeat="m in movie">
+        <h4><a href="#">{{ m.Title }}</a></h4>
+      </div>
+    </div>
+  </div>
+</div>

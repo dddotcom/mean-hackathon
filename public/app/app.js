@@ -10,7 +10,8 @@ app.config([
     $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'app/views/home.html'
+      templateUrl: 'app/views/home.html',
+      controller: 'movieCtrl'
     })
     .state('signup', {
       url:'/signup',
