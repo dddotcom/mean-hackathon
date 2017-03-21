@@ -104,7 +104,7 @@ angular.module('AuthCtrls', ['AuthServices'])
   //
   // }
 }])
-.controller("FilmCtrl",["$scope", "$http", "$stateParams", "TrackAPI", function($scope, $http, $stateParams, TrackAPI){
+.controller("FilmCtrl",["$scope", "$http", "$stateParams", "TrackAPI", "$location", function($scope, $http, $stateParams, TrackAPI, $location){
 
   $scope.imdbID = $stateParams.filmId;
   $scope.tracks = [];
@@ -130,6 +130,14 @@ angular.module('AuthCtrls', ['AuthServices'])
       console.log(err);
     });
 
+    $scope.deleteTrack = function(trackId) {
+      TrackAPI.deleteTrack(trackId).then(function success(response){
+        console.log("success", response);
+        $location.path("/film/" + $scope.imdbID);
+      }, function error(err){
+        console.log("Error with TrackAPI.deleteTrack()", err);
+      }); 
+    };
 }])
 .controller("TrackCtrl", ["$scope", "$stateParams", "TrackAPI", "$location", "Alerts", function($scope, $stateParams, TrackAPI, $location, Alerts){
   $scope.trackId = $stateParams.songId;
