@@ -1,3 +1,5 @@
+<a href="/film/{{track.imdbID}}">Back</a>
+
 <h1>Add Track</h1>
 
 <form ng-submit="addTrack()">
@@ -20,6 +22,6 @@
 	<div class="form-group">
 		<label for="imdbID">imdbID: </label>
 		<input type="text" class="form-control" ng-model="track.imdbID" placeholder="Track URL" disabled>
-	</div> 
+	</div>
 	<input type="submit" class="btn btn-success" value="Submit">
 </form>
