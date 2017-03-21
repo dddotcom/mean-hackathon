@@ -35,7 +35,8 @@ app.config([
     })
     .state('editSong', {
       url:'/film/editSong/:songId',
-      templateUrl: "app/views/editSong.html"
+      templateUrl: "app/views/editSong.html",
+      controller: "TrackCtrl"
     })
     .state('404', {
       url: '/404',

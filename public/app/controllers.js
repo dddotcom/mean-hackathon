@@ -62,7 +62,7 @@ angular.module('AuthCtrls', ['AuthServices'])
     TrackAPI.addTrack($scope.track).then(function success(response){
       console.log("success", response);
       Alerts.add("success", "You created a track");
-      $location.path('/');
+      $location.path("/film/" + $scope.track.imdbID);
     }, function error(err){
       Alerts.add("error", "Failed to create track");
       console.log("error with track api.add track)", err);
@@ -114,14 +114,24 @@ angular.module('AuthCtrls', ['AuthServices'])
       console.log(err);
     });
 
+}])
+.controller("TrackCtrl", ["$scope", "$stateParams", "TrackAPI", "$location", "Alerts", function($scope, $stateParams, TrackAPI, $location, Alerts){
+  $scope.trackId = $stateParams.songId;
+  $scope.track = {};
+
+  TrackAPI.getTrack($scope.trackId).then(function success(response){
+    $scope.track = response;
+  }, function error(err){
+    console.log(err);
+  });
+
+  $scope.editTrack = function() {
+    TrackAPI.updateTrack($scope.track).then(function success(response){
+      $location.path("/film/" + $scope.track.imdbID);
+    }, function error(err){
+      Alerts.add("error", "Failed to update track");
+      console.log("error with track api.update track)", err);
+    });
+  };
 
 }]);
-
-
-
-
-
-
-
-
-

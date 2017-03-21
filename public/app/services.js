@@ -22,6 +22,28 @@ angular.module('AuthServices', ['ngResource'])
        console.log("error", err);
        return null;
      });
+   },
+   getTrack: function(trackId){
+     return $http.get("api/tracks/singleTrack/" + trackId)
+     .then(function success(response){
+       console.log("got track successfully");
+       console.log(response.data);
+       return response.data;
+     }, function error(err){
+       console.log("error", err);
+       return null;
+     });
+   },
+   updateTrack: function(track){
+     return $http.put("api/tracks/" + track._id, track)
+     .then(function success(response){
+       console.log("successful update!");
+       console.log(response);
+       return response.data;
+     }, function error(err){
+       console.log("error", err);
+       return null;
+     });
    }
   };
 }])
