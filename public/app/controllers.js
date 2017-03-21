@@ -47,6 +47,28 @@ angular.module('AuthCtrls', ['AuthServices'])
 .controller('AlertsCtrl', ['$scope', 'Alerts', function($scope, Alerts){
   $scope.alerts = Alerts.get();
 }])
+.controller('AddSongCtrl', ['$scope', 'Alerts', '$location', 'TrackAPI', function($scope, Alerts, $location, TrackAPI){
+  $scope.track = {
+    title: '',
+    artist: '',
+    starttime: '',
+    url: '',
+    imdbID: ''
+  };
+
+  $scope.addTrack = function() {
+    console.log("add track called");
+    console.log($scope.track);
+    TrackAPI.addTrack($scope.track).then(function success(response){
+      console.log("success", response);
+      Alerts.add("success", "You created a track");
+      $location.path('/');
+    }, function error(err){
+      Alerts.add("error", "Failed to create track");
+      console.log("error with track api.add track)", err);
+    });
+  };
+}])
 .controller("movieCtrl",["$scope", "$http", function($scope, $http){
   $scope.movie=[];
 

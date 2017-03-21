@@ -1,4 +1,19 @@
-angular.module('AuthServices', [])
+angular.module('AuthServices', ['ngResource'])
+.factory('TrackAPI', ['$http', function($http){
+  return {
+    addTrack: function(track){
+      return $http.post("api/tracks", track)
+      .then(function success(response){
+        console.log("successful add!");
+        console.log(response);
+        return response.data;
+      }, function error(err){
+        console.log("error!\n" + err);
+        return null;
+      });
+    },
+  };
+}])
 .factory('Auth', ["$window", function($window){
   return {
     saveToken: function(token){
