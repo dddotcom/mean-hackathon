@@ -47,7 +47,7 @@ angular.module('AuthCtrls', ['AuthServices'])
 .controller('AlertsCtrl', ['$scope', 'Alerts', function($scope, Alerts){
   $scope.alerts = Alerts.get();
 }])
-.controller('AddSongCtrl', ['$scope', 'Alerts', '$location', 'Track', function($scope, Alerts, $location, Track){
+.controller('AddSongCtrl', ['$scope', 'Alerts', '$location', 'TrackAPI', function($scope, Alerts, $location, TrackAPI){
   $scope.track = {
     title: '',
     artist: '',
@@ -57,12 +57,15 @@ angular.module('AuthCtrls', ['AuthServices'])
   };
 
   $scope.addTrack = function() {
-    Track.save($scope.track, function success(data) {
+    console.log("add track called");
+    console.log($scope.track);
+    TrackAPI.addTrack($scope.track).then(function success(response){
+      console.log("success", response);
       Alerts.add("success", "You created a track");
       $location.path('/');
-    }, function error(data){
-      console.log(data);
+    }, function error(err){
       Alerts.add("error", "Failed to create track");
+      console.log("error with track api.add track)", err);
     });
   };
 }]);

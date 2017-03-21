@@ -1,6 +1,6 @@
 //Routes & Vars
 var express = require('express');
-var User = require('../models/tracks');
+var Track = require('../models/track');
 var router = express.Router();
 
 //Routes
