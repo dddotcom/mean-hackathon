@@ -46,4 +46,23 @@ angular.module('AuthCtrls', ['AuthServices'])
 }])
 .controller('AlertsCtrl', ['$scope', 'Alerts', function($scope, Alerts){
   $scope.alerts = Alerts.get();
+}])
+.controller("movieCtrl",["$scope", "$http", function($scope, $http){
+  $scope.movie=[];
+
+  $scope.getMovie = function(searchTerm){
+    var req = {
+      url:"http://www.omdbapi.com/?",
+      method: "GET",
+      params: {
+        s: searchTerm
+      }
+    }
+    $http(req).then(function success(res){
+      $scope.movie = res.data.Search;
+    }, function error(res){
+      consle.log("error", res)
+    })
+
+  }
 }]);
