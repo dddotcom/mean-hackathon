@@ -36,6 +36,13 @@ router.put('/:songId', function(req,res){
 	});
 });
 
+router.delete('/:songId', function(req,res){
+	Track.findByIdAndRemove(req.params.songId, function(err) {
+		if (err) return res.status(500).send(err);
+		return res.send({ message: 'success' });
+	});
+});
+
 router.get('/singleTrack/:trackId', function(req, res){
 	Track.findById(req.params.trackId, function(err, track){
 		if(err) return res.status(500).send(err);

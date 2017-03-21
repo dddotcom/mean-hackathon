@@ -44,6 +44,16 @@ angular.module('AuthServices', ['ngResource'])
        console.log("error", err);
        return null;
      });
+   },
+   deleteTrack: function(trackId){
+    return $http.delete("api/tracks/" + trackId)
+    .then(function success(response){
+      console.log("successful delete!");
+      return response.data; 
+    }, function error(err){
+      console.log("error", err);
+      return null; 
+    });
    }
   };
 }])
