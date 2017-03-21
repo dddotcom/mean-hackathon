@@ -99,10 +99,13 @@ angular.module('AuthCtrls', ['AuthServices'])
   //
   // }
 }])
-.controller("FilmCtrl",["$scope", "$http", "$stateParams", "TrackAPI", function($scope, $http, $stateParams, TrackAPI){
+.controller("FilmCtrl",["$scope", "$http", "$stateParams", "TrackAPI", "Auth", function($scope, $http, $stateParams, TrackAPI, Auth){
 
   $scope.imdbID = $stateParams.filmId;
   $scope.tracks = [];
+  $scope.isLoggedIn = function(){
+    return Auth.isLoggedIn();
+  };
 
     var req = {
       url:"http://www.omdbapi.com/?",
