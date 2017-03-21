@@ -5,9 +5,7 @@ angular.module('AuthCtrls', ['AuthServices'])
   };
 
   $scope.logout = function() {
-    console.log("before logout", Auth.getToken());
     Auth.removeToken();
-    console.log("After logout", Auth.getToken());
     Alerts.add("success", "You are now logged out");
     $location.path("/login");
   };
@@ -57,11 +55,8 @@ angular.module('AuthCtrls', ['AuthServices'])
   };
 
   $scope.addTrack = function() {
-    console.log("add track called");
-    console.log($scope.track);
     TrackAPI.addTrack($scope.track).then(function success(response){
       console.log("success", response);
-      Alerts.add("success", "You created a track");
       $location.path("/film/" + $scope.track.imdbID);
     }, function error(err){
       Alerts.add("error", "Failed to create track");
