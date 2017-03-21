@@ -22,6 +22,18 @@ app.config([
       templateUrl: 'app/views/userLogin.html',
       controller: 'LoginCtrl'
     })
+    .state('film', {
+      url:'/film/:filmId',
+      templateUrl: "app/views/film.html"
+    })
+    .state('addSong', {
+      url:'/film/addSong',
+      templateUrl: "app/views/addSong.html"
+    })
+    .state('editSong', {
+      url:'/film/editSong/:songId',
+      templateUrl: "app/views/editSong.html"
+    })
     .state('404', {
       url: '/404',
       templateUrl: 'app/views/404.html'
