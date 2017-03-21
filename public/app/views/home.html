@@ -1,9 +1,17 @@
 <div>
-  <h1>Home</h1>
-  <label for="">Find Movie by Title</label>
-  <input type="text" name="movieTitle" ng-model="searchTerm">
-  <button type="submit" ng-click="getMovie(searchTerm)">GO</button>
 
+  <h1>Home</h1>
+  <div class="box">
+    <div class="container-1">
+
+      <label for="">Find Movie by Title</label>
+      <br>
+      <span class="icon"><i class="fa fa-search"></i></span>
+      <input type="search" name="movieTitle" ng-model="searchTerm">
+      <button type="submit" id="search" placeholder="Search..." ng-click="getMovie(searchTerm)">GO</button>
+    </div>
+    <br>
+  </div>
   <div class="row">
     <div class="col-sm-6" ng-repeat="m in movie">
       <div class="well">
@@ -13,4 +21,10 @@
   </div>
 </div>
 
-
+<!--
+<div class="box">
+  <div class="container-1">
+      <span class="icon"><i class="fa fa-search"></i></span>
+      <input type="search" id="search" placeholder="Search..." />
+  </div>
+</div -->

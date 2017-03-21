@@ -70,14 +70,13 @@ angular.module('AuthCtrls', ['AuthServices'])
   };
 }])
 .controller("movieCtrl",["$scope", "$http", function($scope, $http){
-  $scope.movie=[];
-
-  $scope.getMovie = function(searchTerm){
+    $scope.searchTerm ="space jam" ;
+  $scope.$watch("searchTerm", function(newVal, oldVal){
     var req = {
       url:"http://www.omdbapi.com/?",
       method: "GET",
       params: {
-        s: searchTerm
+        s: $scope.searchTerm
       }
     }
     $http(req).then(function success(res){
@@ -86,7 +85,24 @@ angular.module('AuthCtrls', ['AuthServices'])
       console.log("error", res)
     })
 
-  }
+  })
+  // $scope.movie=[];
+
+  // $scope.getMovie = function(searchTerm){
+  //   var req = {
+  //     url:"http://www.omdbapi.com/?",
+  //     method: "GET",
+  //     params: {
+  //       s: searchTerm
+  //     }
+  //   }
+  //   $http(req).then(function success(res){
+  //     $scope.movie = res.data.Search;
+  //   }, function error(res){
+  //     console.log("error", res)
+  //   })
+  //
+  // }
 }])
 .controller("FilmCtrl",["$scope", "$http", "$stateParams", "TrackAPI", function($scope, $http, $stateParams, TrackAPI){
 
@@ -116,12 +132,3 @@ angular.module('AuthCtrls', ['AuthServices'])
 
 
 }]);
-
-
-
-
-
-
-
-
-
