@@ -83,7 +83,7 @@ angular.module('AuthCtrls', ['AuthServices'])
     $http(req).then(function success(res){
       $scope.movie = res.data.Search;
     }, function error(res){
-      consle.log("error", res)
+      console.log("error", res)
     })
 
   }
