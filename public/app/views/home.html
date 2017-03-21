@@ -1,4 +1,4 @@
-<div>
+
 
   <h1>Home</h1>
   <div class="box">
@@ -7,15 +7,15 @@
       <label for="">Find Movie by Title</label>
       <br>
       <span class="icon"><i class="fa fa-search"></i></span>
-      <input type="search" name="movieTitle" ng-model="searchTerm">
+      <input type="search" name="movieTitle" ng-model="searchTerm" id="search">
     </div>
     <br>
   </div>
-  <div class="row">
+  <div class="row homeRow">
     <div class="col-sm-6" ng-repeat="m in movie">
-      <div class="well">
-        <h4><a ng-href="/film/{{m.imdbID}}">{{ m.Title }}</a></h4>
+      <div class="movies text-center" ng-style="{'background-image':'url({{ m.Poster }})'}">
+        <h2 class="movieTitle"><a ng-href="/film/{{m.imdbID}}">{{ m.Title }}</a></h2>
       </div>
     </div>
   </div>
-</div>
+
