@@ -1,4 +1,7 @@
-angular.module('AuthServices', [])
+angular.module('AuthServices', ['ngResource'])
+.factory('Track', ['$resource', function($resource){
+  return $resource('/api/tracks/:songId');
+}])
 .factory('Auth', ["$window", function($window){
   return {
     saveToken: function(token){

@@ -28,7 +28,8 @@ app.config([
     })
     .state('addSong', {
       url:'/film/addSong',
-      templateUrl: "app/views/addSong.html"
+      templateUrl: "app/views/addSong.html",
+      controller: 'AddSongCtrl'
     })
     .state('editSong', {
       url:'/film/editSong/:songId',
