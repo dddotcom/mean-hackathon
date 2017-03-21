@@ -7,9 +7,10 @@
   <div class="row">
     <div class="col-sm-6" ng-repeat="m in movie">
       <div class="well">
-        <h4><a href="#">{{ m.Title }}</a></h4>
-        <a class="btn btn-success" ng-href="/film/{{m._id}}">Details</a>
+        <h4><a ng-href="/film/{{m.imdbID}}">{{ m.Title }}</a></h4>
       </div>
     </div>
   </div>
 </div>
+
+

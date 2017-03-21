@@ -12,6 +12,17 @@ angular.module('AuthServices', ['ngResource'])
         return null;
       });
     },
+    getTracks: function(filmId){
+     return $http.get("api/tracks")
+     .then(function success(response){
+       console.log("got tracks successfully");
+       console.log(response.data);
+       return response.data;
+     }, function error(err){
+       console.log("error", err);
+       return null;
+     });
+   }
   };
 }])
 .factory('Auth', ["$window", function($window){

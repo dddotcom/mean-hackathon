@@ -24,13 +24,14 @@ app.config([
       controller: 'LoginCtrl'
     })
     .state('addSong', {
-      url:'/film/addSong',
+      url:'/film/addSong/:filmId',
       templateUrl: "app/views/addSong.html",
       controller: 'AddSongCtrl'
     })
     .state('film', {
       url:'/film/:filmId',
-      templateUrl: "app/views/film.html"
+      templateUrl: "app/views/film.html",
+      controller: 'FilmCtrl'
     })
     .state('editSong', {
       url:'/film/editSong/:songId',

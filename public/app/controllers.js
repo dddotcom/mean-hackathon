@@ -47,13 +47,13 @@ angular.module('AuthCtrls', ['AuthServices'])
 .controller('AlertsCtrl', ['$scope', 'Alerts', function($scope, Alerts){
   $scope.alerts = Alerts.get();
 }])
-.controller('AddSongCtrl', ['$scope', 'Alerts', '$location', 'TrackAPI', function($scope, Alerts, $location, TrackAPI){
+.controller('AddSongCtrl', ['$scope', 'Alerts', '$location', 'TrackAPI', "$stateParams", function($scope, Alerts, $location, TrackAPI, $stateParams){
   $scope.track = {
     title: '',
     artist: '',
     starttime: '',
     url: '',
-    imdbID: ''
+    imdbID: $stateParams.filmId
   };
 
   $scope.addTrack = function() {
@@ -87,4 +87,41 @@ angular.module('AuthCtrls', ['AuthServices'])
     })
 
   }
+}])
+.controller("FilmCtrl",["$scope", "$http", "$stateParams", "TrackAPI", function($scope, $http, $stateParams, TrackAPI){
+
+  $scope.imdbID = $stateParams.filmId;
+  $scope.tracks = [];
+
+    var req = {
+      url:"http://www.omdbapi.com/?",
+      method: "GET",
+      params: {
+        i: $scope.imdbID
+      }
+    }
+
+    $http(req).then(function success(res){
+      $scope.movie = res.data;
+    }, function error(res){
+      console.log("error", res)
+    })
+
+    TrackAPI.getTracks($scope.imdbID).then(function success(response){
+      $scope.tracks = response;
+    }, function error(err){
+      Alerts.add("error", "failed to get tracks");
+      console.log(err);
+    });
+
+
 }]);
+
+
+
+
+
+
+
+
+

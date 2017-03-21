@@ -1,1 +1,14 @@
 <h1>Film</h1>
+
+<h2>{{ movie.Title }}</h2>
+<img ng-src="{{ movie.Poster }}">
+
+<div ng-repeat="track in tracks">
+	<h4>{{ track.artist }} | <a ng-href="{{ track.url }}" target="_blank">{{ track.title }} </a> | Modified by: TO ADD IN USER</h4>
+</div>
+
+
+
+<div><a href="/film/addSong/{{ movie.imdbID }}" class="btn btn-success">Add Track</a></div>
+
+
