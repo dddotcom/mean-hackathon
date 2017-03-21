@@ -46,4 +46,23 @@ angular.module('AuthCtrls', ['AuthServices'])
 }])
 .controller('AlertsCtrl', ['$scope', 'Alerts', function($scope, Alerts){
   $scope.alerts = Alerts.get();
+}])
+.controller('AddSongCtrl', ['$scope', 'Alerts', '$location', 'Track', function($scope, Alerts, $location, Track){
+  $scope.track = {
+    title: '',
+    artist: '',
+    starttime: '',
+    url: '',
+    imdbID: ''
+  };
+
+  $scope.addTrack = function() {
+    Track.save($scope.track, function success(data) {
+      Alerts.add("success", "You created a track");
+      $location.path('/');
+    }, function error(data){
+      console.log(data);
+      Alerts.add("error", "Failed to create track");
+    });
+  };
 }]);
