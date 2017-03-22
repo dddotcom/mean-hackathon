@@ -60,6 +60,10 @@ div.homeRow {
 	margin-top: 50px;
 }
 
+div.homeRow :hover {
+	opacity: 1;
+}
+
 .trackList {
 	background-color: #797979;
 	border: 1px solid
@@ -67,4 +71,13 @@ div.homeRow {
 
 #search-box {
 	outline: none;
+}
+
+a, a:hover{
+	text-decoration: none;
+	color: white;
+}
+
+.soundtrack-link:hover {
+	color: #5cb85c;
 }
