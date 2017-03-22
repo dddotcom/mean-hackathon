@@ -1,11 +1,11 @@
 a {
-	text-decoration: none; 
+	text-decoration: none;
 	color: #ffffff;
 }
 
 .movieTitle {
-	padding-top: 10%;
-	text-shadow: 2px 2px #000000;
+	padding-top: 50%;
+	text-shadow: 3px 3px #000000;
 }
 
 body {
@@ -15,7 +15,7 @@ body {
 }
 
 .movies {
-	height: 100px;
+	height: 300px;
 	opacity: 0.8;
 }
 
@@ -68,6 +68,3 @@ div.homeRow {
 #search-box {
 	outline: none;
 }
-
-
-

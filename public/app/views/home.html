@@ -13,10 +13,9 @@
  </form>
 
   <div class="row homeRow">
-    <div class="col-sm-6" ng-repeat="m in movie">
+    <div class="col-xs-12 col-sm-3" ng-repeat="m in movie">
       <div class="movies text-center" ng-style="{'background-image':'url({{ m.Poster }})'}">
         <h2 class="movieTitle"><a ng-href="/film/{{m.imdbID}}">{{ m.Title }}</a></h2>
       </div>
     </div>
   </div>
-
