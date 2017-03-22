@@ -11,6 +11,7 @@ a {
 body {
 	background-color: rgba(0, 0, 0, 0.8);
 	color: #ffffff;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 .movies {
@@ -29,7 +30,7 @@ body {
  height: 50px;
  border: 2px solid black;
  font-size: 14pt;
- float: left;
+/* float: left;*/
  color: #63717f ;
  padding-left: 45px;
  -webkit-border-radius: 5px;
@@ -58,4 +59,15 @@ transition: background .55s ease;
 div.homeRow {
 	margin-top: 50px;
 }
+
+.trackList {
+	background-color: #797979;
+	border: 1px solid
+}
+
+#search-box {
+	outline: none;
+}
+
+
 

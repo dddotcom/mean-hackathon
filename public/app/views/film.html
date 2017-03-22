@@ -1,18 +1,26 @@
-<h1>Film</h1>
 
-<div>
-	<h2>{{ movie.Title }}</h2>
+
+<div class="text-center">
+	<h1>{{ movie.Title }}</h1>
 	<img ng-src="{{ movie.Poster }}">
 	<br>
 	<a href="/film/addSong/{{ movie.imdbID }}" class="btn btn-success" ng-show="isLoggedIn()">Add Track</a>
+	<h2>Track List</h2>
 </div>
 
-<div class="row" ng-repeat="track in tracks">
-	<div class="col-xs-10">
-		<h4>{{track.starttime}} {{ track.artist }} | <a ng-href="{{ track.url }}" target="_blank">{{ track.title }} </a></h4>
-	</div>
-	<div class="col-xs-2">
-		<a ng-show="isLoggedIn()" ng-href="/film/editSong/{{track._id}}" class="btn btn-primary">Edit</a>
-		<a ng-show="isLoggedIn()" ng-click="deleteTrack(track._id)" class="btn btn-danger">Delete</a>
-	</div>
+<div class="row text-center" ng-repeat="track in tracks">
+	<div class="col-sm-1"></div>
+  	<div class="col-sm-10 trackList">
+		<h4>{{track.starttime}}<strong>{{ track.artist }}</strong><u><a ng-href="{{ track.url }}" target="_blank">{{ track.title }}</a></u>
+
+
+
+		<a class="btn btn-warning" ng-show="isLoggedIn()" ng-href="/film/editSong/{{track._id}}">Edit</a> 
+		<a class="btn btn-danger" ng-show="isLoggedIn()" ng-click="deleteTrack(track._id)">Delete</a>
+
+		</h4>
+		<!-- <a ng-show="isLoggedIn()" ng-href="/film/editSong/{{track._id}}">Edit</a>
+		<a ng-show="isLoggedIn()" ng-click="deleteTrack(track._id)">Delete</a> -->
+  	</div>
+  	<div class="col-sm-1"></div>
 </div>
