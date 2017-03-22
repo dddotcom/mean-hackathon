@@ -4,8 +4,6 @@ angular.module('AuthServices', ['ngResource'])
     addTrack: function(track){
       return $http.post("api/tracks", track)
       .then(function success(response){
-        console.log("successful add!");
-        console.log(response);
         return response.data;
       }, function error(err){
         console.log("error!\n" + err);
@@ -15,8 +13,6 @@ angular.module('AuthServices', ['ngResource'])
     getTracks: function(filmId){
      return $http.get("api/tracks/" + filmId)
      .then(function success(response){
-       console.log("got tracks successfully");
-       console.log(response.data);
        return response.data;
      }, function error(err){
        console.log("error", err);
@@ -26,8 +22,6 @@ angular.module('AuthServices', ['ngResource'])
    getTrack: function(trackId){
      return $http.get("api/tracks/singleTrack/" + trackId)
      .then(function success(response){
-       console.log("got track successfully");
-       console.log(response.data);
        return response.data;
      }, function error(err){
        console.log("error", err);
@@ -37,8 +31,6 @@ angular.module('AuthServices', ['ngResource'])
    updateTrack: function(track){
      return $http.put("api/tracks/" + track._id, track)
      .then(function success(response){
-       console.log("successful update!");
-       console.log(response);
        return response.data;
      }, function error(err){
        console.log("error", err);
@@ -48,11 +40,10 @@ angular.module('AuthServices', ['ngResource'])
    deleteTrack: function(trackId){
     return $http.delete("api/tracks/" + trackId)
     .then(function success(response){
-      console.log("successful delete!");
-      return response.data; 
+      return response.data;
     }, function error(err){
       console.log("error", err);
-      return null; 
+      return null;
     });
    }
   };
