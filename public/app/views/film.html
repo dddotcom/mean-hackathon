@@ -8,19 +8,16 @@
 	<h2>Track List</h2>
 </div>
 
-<div class="row text-center" ng-repeat="track in tracks">
+<div class="row text-center" ng-repeat="track in tracks track by $index">
 	<div class="col-sm-1"></div>
   	<div class="col-sm-10 trackList">
 		<h4>{{track.starttime}}<strong>{{ track.artist }}</strong><u><a ng-href="{{ track.url }}" target="_blank">{{ track.title }}</a></u>
 
-
-
-		<a class="btn btn-warning" ng-show="isLoggedIn()" ng-href="/film/editSong/{{track._id}}">Edit</a> 
+		<a class="btn btn-warning" ng-show="isLoggedIn()" ng-href="/film/editSong/{{track._id}}">Edit</a>
 		<a class="btn btn-danger" ng-show="isLoggedIn()" ng-click="deleteTrack(track._id)">Delete</a>
+		<a class="btn btn-primary" ng-click="addLike(track._id, $index)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{ track.likes }}</a>
 
 		</h4>
-		<!-- <a ng-show="isLoggedIn()" ng-href="/film/editSong/{{track._id}}">Edit</a>
-		<a ng-show="isLoggedIn()" ng-click="deleteTrack(track._id)">Delete</a> -->
   	</div>
   	<div class="col-sm-1"></div>
 </div>

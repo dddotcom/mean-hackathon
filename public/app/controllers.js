@@ -51,7 +51,8 @@ angular.module('AuthCtrls', ['AuthServices'])
     artist: '',
     starttime: '',
     url: '',
-    imdbID: $stateParams.filmId
+    imdbID: $stateParams.filmId,
+    likes: 0
   };
 
   $scope.addTrack = function() {
@@ -138,6 +139,24 @@ angular.module('AuthCtrls', ['AuthServices'])
         });
       }, function error(err){
         console.log("Error with TrackAPI.deleteTrack()", err);
+      });
+    };
+
+    $scope.addLike = function(trackId, index){
+      TrackAPI.getTrack(trackId).then(function success(response){
+        var track = response;
+        if(!isNaN(track.likes)){
+          track.likes++;
+        } else {
+          track.likes = 0;
+        }
+        TrackAPI.updateTrack(track).then(function success(response){
+          $scope.tracks[index].likes++;
+        }, function error(err){
+          console.log(err);
+        });
+      }, function error(err){
+        console.log(err);
       });
     };
 }])
