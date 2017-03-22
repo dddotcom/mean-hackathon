@@ -1,5 +1,3 @@
-
-
 <div class="text-center">
 	<h1>{{ movie.Title }}</h1>
 	<img ng-src="{{ movie.Poster }}">
@@ -11,12 +9,14 @@
 <div class="row text-center" ng-repeat="track in tracks track by $index">
 	<div class="col-sm-1"></div>
   	<div class="col-sm-10 trackList">
-		<h4>{{track.starttime}}<strong>{{ track.artist }}</strong><u><a ng-href="{{ track.url }}" target="_blank">{{ track.title }}</a></u>
+		<h4 class="text-left">@ {{track.starttime | date:'h:mm'}} - <strong>{{ track.artist }}</strong> - <u><a ng-href="{{ track.url }}" target="_blank">{{ track.title }}</a></u>
 
-		<a class="btn btn-warning" ng-show="isLoggedIn()" ng-href="/film/editSong/{{track._id}}">Edit</a>
-		<a class="btn btn-danger" ng-show="isLoggedIn()" ng-click="deleteTrack(track._id)">Delete</a>
-		<span class="btn" ng-click="addLike(track._id, $index)"><i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i> {{ track.likes }}</span>
-		<span class="btn" ng-click="addDislike(track._id, $index)"><i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i> {{ track.dislikes }}</span>
+		<div class="text-right">
+			<a class="btn btn-warning" ng-show="isLoggedIn()" ng-href="/film/editSong/{{track._id}}">Edit</a>
+			<a class="btn btn-danger" ng-show="isLoggedIn()" ng-click="deleteTrack(track._id)">Delete</a>
+			<span class="btn" ng-click="addLike(track._id, $index)"><i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i> {{ track.likes }}</span>
+			<span class="btn" ng-click="addDislike(track._id, $index)"><i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i> {{ track.dislikes }}</span>
+		</div>
 
 		</h4>
   	</div>
