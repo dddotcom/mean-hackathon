@@ -110,7 +110,7 @@ angular.module('AuthCtrls', ['AuthServices'])
   };
 
     var req = {
-      url:"http://www.omdbapi.com/?",
+      url:"https://www.omdbapi.com/?",
       method: "GET",
       params: {
         i: $scope.imdbID
