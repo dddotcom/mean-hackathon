@@ -15,7 +15,8 @@
 
 		<a class="btn btn-warning" ng-show="isLoggedIn()" ng-href="/film/editSong/{{track._id}}">Edit</a>
 		<a class="btn btn-danger" ng-show="isLoggedIn()" ng-click="deleteTrack(track._id)">Delete</a>
-		<a class="btn btn-primary" ng-click="addLike(track._id, $index)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{ track.likes }}</a>
+		<span class="btn" ng-click="addLike(track._id, $index)"><i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i> {{ track.likes }}</span>
+		<span class="btn" ng-click="addDislike(track._id, $index)"><i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i> {{ track.dislikes }}</span>
 
 		</h4>
   	</div>

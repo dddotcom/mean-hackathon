@@ -52,7 +52,8 @@ angular.module('AuthCtrls', ['AuthServices'])
     starttime: '',
     url: '',
     imdbID: $stateParams.filmId,
-    likes: 0
+    likes: 0,
+    dislikes: 0
   };
 
   $scope.addTrack = function() {
@@ -148,10 +149,36 @@ angular.module('AuthCtrls', ['AuthServices'])
         if(!isNaN(track.likes)){
           track.likes++;
         } else {
-          track.likes = 0;
+          track.likes = 1;
         }
         TrackAPI.updateTrack(track).then(function success(response){
-          $scope.tracks[index].likes++;
+          if(!isNaN($scope.tracks[index].likes)){
+            $scope.tracks[index].likes++;
+          } else {
+            $scope.tracks[index].likes = 1;
+          }
+        }, function error(err){
+          console.log(err);
+        });
+      }, function error(err){
+        console.log(err);
+      });
+    };
+
+    $scope.addDislike = function(trackId, index){
+      TrackAPI.getTrack(trackId).then(function success(response){
+        var track = response;
+        if(!isNaN(track.dislikes)){
+          track.dislikes++;
+        } else {
+          track.dislikes = 1;
+        }
+        TrackAPI.updateTrack(track).then(function success(response){
+          if(!isNaN($scope.tracks[index].dislikes)){
+            $scope.tracks[index].dislikes++;
+          } else {
+            $scope.tracks[index].dislikes = 1;
+          }
         }, function error(err){
           console.log(err);
         });

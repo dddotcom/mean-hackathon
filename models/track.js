@@ -7,7 +7,8 @@ var TrackSchema = new mongoose.Schema({
 	starttime: String,
 	url: String,
 	imdbID: String,
-	likes: Number 
+	likes: Number,
+	dislikes: Number 
 })
 
 module.exports = mongoose.model('Track', TrackSchema);
