@@ -70,7 +70,7 @@ angular.module('AuthCtrls', ['AuthServices'])
     $scope.searchTerm ="" ;
   $scope.$watch("searchTerm", function(newVal, oldVal){
     var req = {
-      url:"http://www.omdbapi.com/?",
+      url:"https://www.omdbapi.com/?",
       method: "GET",
       params: {
         s: $scope.searchTerm
