@@ -5,7 +5,8 @@ a {
 
 .movieTitle {
 	padding-top: 50%;
-	text-shadow: 3px 3px #000000;
+	text-shadow: 3px 3px black;
+	text-align: center !important;
 }
 
 body {
@@ -16,7 +17,7 @@ body {
 
 .movies {
 	height: 300px;
-	opacity: 0.8;
+	opacity: 0.9;
 }
 
 .container-1 {
@@ -30,7 +31,6 @@ body {
  height: 50px;
  border: 2px solid black;
  font-size: 14pt;
-/* float: left;*/
  color: #63717f ;
  padding-left: 45px;
  -webkit-border-radius: 5px;
@@ -80,4 +80,7 @@ a, a:hover{
 
 .soundtrack-link:hover {
 	color: #5cb85c;
+}
+.logo {
+	font-family: 'Black Ops One', cursive;
 }
